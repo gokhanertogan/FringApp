@@ -1,11 +1,12 @@
-using FringApp.API.Entites;
+using System.Net;
+using FringApp.API.Entities;
 using FringApp.API.Models.Requests;
 using FringApp.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FringApp.API.Controllers;
 
-[Route("[controller]")]
+[Route("api/v1/user")]
 [ApiController]
 public class UserControllers : ControllerBase
 {
@@ -16,7 +17,8 @@ public class UserControllers : ControllerBase
         _userRepository = userRepository;
     }
 
-    [HttpPost]
+    [HttpPost("create")]
+    [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> Create(CreateUserRequestModel request)
     {
         User user = new()
@@ -25,40 +27,51 @@ public class UserControllers : ControllerBase
             LastName = request.LastName,
             Email = request.Email,
             CellPhone = request.CellPhone,
-            Gender = request.Gender,
+            Gender = (int)request.Gender,
             ImageUrl = request.ImageUrl,
-            IsApproved =true,
+            IsApproved = true,
             IsActive = true
         };
 
-        var result = await _userRepository.Create(user);
-        return Ok(result);
+        await _userRepository.Create(user);
+        return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
     }
-    
-    [HttpGet]
+
+    [HttpGet("{userId}", Name = "GetUser")]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> Get(string userId)
     {
         var user = await _userRepository.Get(userId);
         return Ok(user);
     }
 
-    [HttpDelete]
+    [HttpDelete("Delete/{userId}")]
     public async Task<IActionResult> Delete(string userId)
     {
         var result = await _userRepository.Delete(userId);
         return Ok(result);
     }
 
-    [HttpPatch]
+    [HttpPatch("UnSubscribe/{userId}")]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> UnSubscribe(string userId)
     {
-        var result = await _userRepository.UnSubscribe(userId);
-        return Ok(result);
-    }
+        var user = await _userRepository.Get(userId);
+        if (user is null)
+            return NotFound();
 
-    [HttpGet(Name ="BillingInformation")]
+        await _userRepository.UnSubscribe(userId);
+        return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
+    }
+    [HttpGet("Billing/{userId}")]
     public async Task<IActionResult> BillingInformation(string userId)
     {
+        var user = await _userRepository.Get(userId);
+        if (user is null)
+            return NotFound();
+
         var result = await _userRepository.GetBillingInformation(userId);
         return Ok(result);
     }

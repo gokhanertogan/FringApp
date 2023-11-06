@@ -1,4 +1,4 @@
-using FringApp.API.Entites;
+using FringApp.API.Entities;
 
 namespace FringApp.API.Repositories;
 

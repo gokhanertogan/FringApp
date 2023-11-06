@@ -1,4 +1,4 @@
-using FringApp.API.Entites;
+using FringApp.API.Entities;
 using MongoDB.Driver;
 
 namespace FringApp.API.Data;
@@ -9,5 +9,5 @@ public interface IFringDbContext
     IMongoCollection<User> Users { get; }
     IMongoCollection<Product> Products { get; }
     IMongoCollection<Store> Stores { get; }
-    IMongoCollection<Billing> Billingies { get; }
+    IMongoCollection<Billing> Billings { get; }
 }

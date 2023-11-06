@@ -1,5 +1,5 @@
 using FringApp.API.Data;
-using FringApp.API.Entites;
+using FringApp.API.Entities;
 using MongoDB.Driver;
 
 namespace FringApp.API.Repositories;
@@ -28,7 +28,7 @@ public class UserRepository : IUserRepository
 
     public async Task<Billing> GetBillingInformation(string userId)
     {
-        return await _context.Billingies.Find(p => p.UserId == userId).FirstOrDefaultAsync();
+        return await _context.Billings.Find(p => p.UserId == userId).FirstOrDefaultAsync();
     }
 
     public async Task<User> Get(string userId)
