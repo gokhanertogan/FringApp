@@ -45,4 +45,15 @@ public class UserRepository : IUserRepository
         var updateResult = await _context.Users.ReplaceOneAsync(filter: g => g.Id == user.Id, replacement: user);
         return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
     }
+
+    public async Task<Package> GetUserActivePackage(string userId)
+    {
+        var user = await _context.Packages.Find(p => p.UserId == userId).FirstOrDefaultAsync(); 
+        return user;    
+    }
+
+    public async Task<List<UserPackageHistory>> GetUserPackageHistories(string userId)
+    {
+        return await _context.UserPackageHistories.Find(p => p.UserId == userId).ToListAsync();    
+    }
 }

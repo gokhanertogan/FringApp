@@ -15,10 +15,14 @@ public class FringDbContext : IFringDbContext
         Users = database.GetCollection<User>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:User"));
         Stores = database.GetCollection<Store>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:Store"));
         Billings = database.GetCollection<Billing>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:Billing"));
+        Packages = database.GetCollection<Package>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:Package"));
+        UserPackageHistories = database.GetCollection<UserPackageHistory>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:UserPackageHistory"));
     }
     public IMongoCollection<Order> Orders { get; }
     public IMongoCollection<User> Users { get; }
     public IMongoCollection<Product> Products { get; }
     public IMongoCollection<Store> Stores { get; }
     public IMongoCollection<Billing> Billings { get; }
+    public IMongoCollection<Package> Packages { get; }
+    public IMongoCollection<UserPackageHistory> UserPackageHistories { get; }
 }

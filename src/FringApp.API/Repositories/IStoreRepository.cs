@@ -6,5 +6,4 @@ public interface IStoreRepository
 {
     Task<List<Store>> GetStores();
     Task<Store> GetStore(string Id);
-    
 }

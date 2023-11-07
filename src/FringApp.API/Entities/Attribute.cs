@@ -3,14 +3,10 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FringApp.API.Entities;
 
-public class Store
+public class Attribute
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = null!;
     public string Name { get; set; } = null!;
-    public string Longitude { get; set; } = null!;
-    public string Latitude { get; set; } = null!;
-    public DateTime StartTime { get; set; }
-    public DateTime FinishTime { get; set; }
 }

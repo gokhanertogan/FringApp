@@ -65,6 +65,7 @@ public class UserControllers : ControllerBase
         await _userRepository.UnSubscribe(userId);
         return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
     }
+
     [HttpGet("Billing/{userId}")]
     public async Task<IActionResult> BillingInformation(string userId)
     {
@@ -75,4 +76,27 @@ public class UserControllers : ControllerBase
         var result = await _userRepository.GetBillingInformation(userId);
         return Ok(result);
     }
+
+    [HttpGet("{userId}/ActivePackage")]
+    public async Task<IActionResult> GetActivePackage(string userId)
+    {
+        var user = await _userRepository.Get(userId);
+        if (user is null)
+            return NotFound();
+
+        var result = await _userRepository.GetUserActivePackage(userId);
+        return Ok(result);
+    }
+
+    [HttpGet("{userId}/PackageHistories")]
+    public async Task<IActionResult> GetUserPackageHistories(string userId)
+    {
+        var user = await _userRepository.Get(userId);
+        if (user is null)
+            return NotFound();
+
+        var result = await _userRepository.GetUserPackageHistories(userId);
+        return Ok(result);
+    }
+    
 }

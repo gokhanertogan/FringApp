@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj": {}
+    "c:\\Users\\Boyner\\Desktop\\Workspaces\\FringApp\\src\\FringApp.API\\FringApp.API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj": {
+    "c:\\Users\\Boyner\\Desktop\\Workspaces\\FringApp\\src\\FringApp.API\\FringApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
+        "projectUniqueName": "c:\\Users\\Boyner\\Desktop\\Workspaces\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
         "projectName": "FringApp.API",
-        "projectPath": "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
-        "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\obj\\",
+        "projectPath": "c:\\Users\\Boyner\\Desktop\\Workspaces\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
+        "packagesPath": "C:\\Users\\Boyner\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Boyner\\Desktop\\Workspaces\\FringApp\\src\\FringApp.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Boyner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +25,9 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dsget.azurewebsites.net/nuget": {}
         },
         "frameworks": {
           "net7.0": {
@@ -84,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
