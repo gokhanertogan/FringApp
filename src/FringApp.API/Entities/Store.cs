@@ -9,8 +9,9 @@ public class Store
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = null!;
     public string Name { get; set; } = null!;
+    public string Address { get; set; } = null!;
     public string Longitude { get; set; } = null!;
     public string Latitude { get; set; } = null!;
-    public DateTime StartTime { get; set; }
-    public DateTime FinishTime { get; set; }
+    public DateTime WorkingStartTime { get; set; }
+    public DateTime WorkingEndTime { get; set; }
 }
