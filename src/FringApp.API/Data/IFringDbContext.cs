@@ -10,6 +10,14 @@ public interface IFringDbContext
     IMongoCollection<Product> Products { get; }
     IMongoCollection<Store> Stores { get; }
     IMongoCollection<Billing> Billings { get; }
-    public IMongoCollection<Package> Packages { get; }
-    public IMongoCollection<UserPackageHistory> UserPackageHistories { get; }
+    IMongoCollection<CategoryDefinition> Categories { get; }
+    IMongoCollection<CategoryProduct> CategoryProducts { get; }
+    IMongoCollection<ProductSizeDefinition> ProductSizes { get; }
+    IMongoCollection<ProductTemperatureDefinition> ProductTemperatures { get; }
+    IMongoCollection<ProductVariant> ProductVariants { get; }
+    IMongoCollection<ProductVariantDefinition> ProductVariantDefinitions { get; }
+    IMongoCollection<StoreAttribute> StoreAttributes { get; }
+    IMongoCollection<StoreAttributeDefinition> StoreAttributeDefinitions { get; }
+    public IMongoCollection<SubscriptionDefinition> Subscriptions { get; }
+    public IMongoCollection<UserSubscriptionHistory> UserSubscriptionHistories { get; }
 }

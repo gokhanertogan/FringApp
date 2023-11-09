@@ -1,7 +1,7 @@
 using System.Net;
 using FringApp.API.Entities;
 using FringApp.API.Models.Requests;
-using FringApp.API.Repositories;
+using FringApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FringApp.API.Controllers;
@@ -10,30 +10,17 @@ namespace FringApp.API.Controllers;
 [ApiController]
 public class UserControllers : ControllerBase
 {
-    private readonly IUserRepository _userRepository;
-
-    public UserControllers(IUserRepository userRepository)
+    private readonly IUserService _userService;
+    public UserControllers(IUserService userService)
     {
-        _userRepository = userRepository;
+        _userService = userService;
     }
 
     [HttpPost("create")]
     [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> Create(CreateUserRequestModel request)
     {
-        User user = new()
-        {
-            Name = request.Name,
-            LastName = request.LastName,
-            Email = request.Email,
-            CellPhone = request.CellPhone,
-            Gender = (int)request.Gender,
-            ImageUrl = request.ImageUrl,
-            IsApproved = true,
-            IsActive = true
-        };
-
-        await _userRepository.Create(user);
+        var user = await _userService.Create(request);
         return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
     }
 
@@ -42,14 +29,14 @@ public class UserControllers : ControllerBase
     [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> Get(string userId)
     {
-        var user = await _userRepository.Get(userId);
+        var user = await _userService.Get(userId);
         return Ok(user);
     }
 
-    [HttpDelete("Delete/{userId}")]
+    [HttpDelete("{userId}")]
     public async Task<IActionResult> Delete(string userId)
     {
-        var result = await _userRepository.Delete(userId);
+        var result = await _userService.Delete(userId);
         return Ok(result);
     }
 
@@ -58,45 +45,7 @@ public class UserControllers : ControllerBase
     [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> UnSubscribe(string userId)
     {
-        var user = await _userRepository.Get(userId);
-        if (user is null)
-            return NotFound();
-
-        await _userRepository.UnSubscribe(userId);
+        var user = await _userService.UnSubscribe(userId);
         return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
     }
-
-    [HttpGet("Billing/{userId}")]
-    public async Task<IActionResult> BillingInformation(string userId)
-    {
-        var user = await _userRepository.Get(userId);
-        if (user is null)
-            return NotFound();
-
-        var result = await _userRepository.GetBillingInformation(userId);
-        return Ok(result);
-    }
-
-    [HttpGet("{userId}/ActivePackage")]
-    public async Task<IActionResult> GetActivePackage(string userId)
-    {
-        var user = await _userRepository.Get(userId);
-        if (user is null)
-            return NotFound();
-
-        var result = await _userRepository.GetUserActivePackage(userId);
-        return Ok(result);
-    }
-
-    [HttpGet("{userId}/PackageHistories")]
-    public async Task<IActionResult> GetUserPackageHistories(string userId)
-    {
-        var user = await _userRepository.Get(userId);
-        if (user is null)
-            return NotFound();
-
-        var result = await _userRepository.GetUserPackageHistories(userId);
-        return Ok(result);
-    }
-    
 }

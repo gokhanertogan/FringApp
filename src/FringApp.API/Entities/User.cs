@@ -14,7 +14,7 @@ public class User
     public string CellPhone { get; set; } = null!;
     public int Gender { get; set; }
     public string ImageUrl { get; set; } = null!;
-    public bool CurrentSubscriptionId { get; set; }
+    public bool? CurrentSubscriptionId { get; set; }
     public bool IsSubscribed { get; set; }
     public bool IsActive { get; set; }
     public bool IsDeleted { get; set; }
