@@ -1,4 +1,4 @@
-namespace FringApp.API.Repositories;
+namespace FringApp.API.Repositories.Order;
 
 public interface IOrderRepository
 {

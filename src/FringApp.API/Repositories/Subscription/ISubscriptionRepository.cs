@@ -1,6 +1,6 @@
 using FringApp.API.Entities;
 
-namespace FringApp.API.Repositories;
+namespace FringApp.API.Repositories.Subscription;
 
 public interface ISubscriptionRepository
 {

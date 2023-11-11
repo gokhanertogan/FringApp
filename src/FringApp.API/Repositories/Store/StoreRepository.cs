@@ -1,8 +1,7 @@
 using FringApp.API.Data;
-using FringApp.API.Entities;
 using MongoDB.Driver;
 
-namespace FringApp.API.Repositories;
+namespace FringApp.API.Repositories.Store;
 
 public class StoreRepository : IStoreRepository
 {
@@ -12,12 +11,12 @@ public class StoreRepository : IStoreRepository
     {
         _context = context;
     }
-    public async Task<Store> GetStore(string Id)
+    public async Task<Entities.Store> GetStore(string Id)
     {
         return await _context.Stores.Find(p => p.Id == Id).FirstOrDefaultAsync();
     }
 
-    public async Task<List<Store>> GetStores()
+    public async Task<List<Entities.Store>> GetStores()
     {
         return await _context.Stores.Find(p => true).ToListAsync();
     }

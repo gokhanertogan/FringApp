@@ -1,13 +1,6 @@
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
 namespace FringApp.API.Entities;
-
-public class StoreAttribute
+public class StoreAttribute : BaseEntity
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; } = null!;
-    public string StoreAttributeDefinitionId { get; set; } = null!;
-    public string StoreId { get; set; } = null!;
+    public StoreAttributeDefinition StoreAttributeDefinition { get; set; } = null!;
+    public Store Store { get; set; } = null!;
 }

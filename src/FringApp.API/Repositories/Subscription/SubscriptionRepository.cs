@@ -2,7 +2,7 @@ using FringApp.API.Data;
 using FringApp.API.Entities;
 using MongoDB.Driver;
 
-namespace FringApp.API.Repositories;
+namespace FringApp.API.Repositories.Subscription;
 
 public class SubscriptionRepository : ISubscriptionRepository
 {
@@ -20,6 +20,6 @@ public class SubscriptionRepository : ISubscriptionRepository
 
     public async Task<List<UserSubscriptionHistory>> GetUserSubscriptionHistories(string userId)
     {
-        return await _context.UserSubscriptionHistories.Find(p => p.UserId == userId).ToListAsync();
+        return await _context.UserSubscriptionHistories.Find(p => p.User.Id == userId).ToListAsync();
     }
 }

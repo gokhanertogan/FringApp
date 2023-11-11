@@ -1,8 +1,7 @@
 using FringApp.API.Data;
-using FringApp.API.Entities;
 using MongoDB.Driver;
 
-namespace FringApp.API.Repositories;
+namespace FringApp.API.Repositories.Billing;
 
 public class BillingRepository : IBillingRepository
 {
@@ -11,8 +10,8 @@ public class BillingRepository : IBillingRepository
     {
         _context = context;
     }
-    public async Task<Billing> GetUserBillingInformation(string userId)
+    public async Task<Entities.Billing> GetUserBillingInformation(string userId)
     {
-        return await _context.Billings.Find(p => p.UserId == userId).FirstOrDefaultAsync();
+        return await _context.Billings.Find(p => p.User.Id == userId).FirstOrDefaultAsync();
     }
 }
