@@ -1,7 +1,7 @@
 using System.Net;
 using FringApp.API.Entities;
 using FringApp.API.Models.Requests;
-using FringApp.API.Services;
+using FringApp.API.Services.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FringApp.API.Controllers;

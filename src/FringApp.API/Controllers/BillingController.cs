@@ -1,4 +1,4 @@
-using FringApp.API.Services;
+using FringApp.API.Services.Billing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FringApp.API.Controllers;
@@ -16,7 +16,7 @@ public class BillingController : ControllerBase
 
     [HttpGet("{userId}")]
     public async Task<IActionResult> BillingInformation(string userId)
-    {     
+    {
         return Ok(await _billingService.GetUserBillingInformation(userId));
     }
 }

@@ -19,5 +19,5 @@ public interface IFringDbContext
     IMongoCollection<StoreAttribute> StoreAttributes { get; }
     IMongoCollection<StoreAttributeDefinition> StoreAttributeDefinitions { get; }
     public IMongoCollection<SubscriptionDefinition> Subscriptions { get; }
-    public IMongoCollection<UserSubscriptionHistory> UserSubscriptionHistories { get; }
+    public IMongoCollection<SubscriptionHistory> SubscriptionHistories { get; }
 }

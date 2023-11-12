@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FringApp.API.Entities;
 
-public class BaseEntity
+public partial class BaseEntity
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

@@ -24,12 +24,13 @@ public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
         await Collection.InsertManyAsync(datas);
         return datas;
     }
-    public async Task<bool> Remove(object id)
+    public async Task<bool> RemoveAsync(object id)
     {
         if (!ObjectId.TryParse(id.ToString(), out ObjectId objectId))
         {
             return false;
         }
+
         var filterId = Builders<T>.Filter.Eq("_id", objectId);
         var deleted = await Collection.FindOneAndDeleteAsync(filterId);
         return deleted != null;

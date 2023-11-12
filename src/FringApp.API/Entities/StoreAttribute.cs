@@ -1,6 +1,6 @@
 namespace FringApp.API.Entities;
 public class StoreAttribute : BaseEntity
 {
-    public StoreAttributeDefinition StoreAttributeDefinition { get; set; } = null!;
-    public Store Store { get; set; } = null!;
+    public string StoreAttributeDefinitionId { get; set; } = null!;
+    public string StoreId { get; set; } = null!;
 }

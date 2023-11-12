@@ -1,5 +1,4 @@
-using FringApp.API.Repositories;
-using FringApp.API.Services;
+using FringApp.API.Services.Subscription;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FringApp.API.Controllers;
@@ -16,7 +15,7 @@ public class SubscriptionController : ControllerBase
 
     [HttpGet("{userId}/CurrentSubscription")]
     public async Task<IActionResult> GetCurrentSubscription(string userId)
-    {  
+    {
         return Ok(await _subscriptionService.GetCurrentSubscription(userId));
     }
 
