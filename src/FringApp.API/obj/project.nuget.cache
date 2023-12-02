@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MBbt+fBlCQWRWptwen3oxdzBeF4YCp36qgAyTr0UjHv8mRS4lm1SkB4c0oDl3Escx8xz7VJWYsDxLfMWhby/iw==",
+  "dgSpecHash": "oycAU3HnN+ehg7Z+7aCjmoL15KNTL0+dRvYRY+QSGWQFQnR3YZgyO7mLjgbSyAlbjA8tko9FWyefSvI9MxQcew==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\Desktop\\repos\\FringApp\\src\\FringApp.API\\FringApp.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

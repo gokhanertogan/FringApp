@@ -188,7 +188,7 @@ public class FringDbContextSeed
 
         if (!isExist)
         {
-            List<StoreAttributeDefinition> storeAttributeDefinitions1 = new List<StoreAttributeDefinition>
+            List<StoreAttributeDefinition> storeAttributeDefinitionDatas = new List<StoreAttributeDefinition>
                                                                         {
                                                                             new()
                                                                             {
@@ -203,8 +203,6 @@ public class FringDbContextSeed
                                                                                 Name= "Car Park"
                                                                             }
                                                                         };
-            var storeAttributeDefinitionDatas = storeAttributeDefinitions1;
-
             var storeDatas = new List<Store>
             {
                 new()

@@ -20,7 +20,7 @@ public class SubscriptionController : ControllerBase
     }
 
     [HttpGet("{userId}/SubscriptionHistories")]
-    public async Task<IActionResult> GetUserPackageHistories(string userId)
+    public async Task<IActionResult> GetUserSubscriptionHistories(string userId)
     {
         return Ok(await _subscriptionService.GetUserSubscriptionHistories(userId));
     }
