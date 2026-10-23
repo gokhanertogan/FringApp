@@ -18,6 +18,7 @@ using FringApp.API.Repositories.Subscription;
 using FringApp.API.Repositories.SubscriptionHistory;
 using FringApp.API.Repositories.User;
 using FringApp.API.Services.Billing;
+using FringApp.API.Services.Store;
 using FringApp.API.Services.Subscription;
 using FringApp.API.Services.User;
 using FringApp.API.Settings;
@@ -30,8 +31,8 @@ builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsi
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
-builder.Services.AddTransient<IFringDbContext, FringDbContext>();
 builder.Services.AddSingleton<FringDbContext>();
+builder.Services.AddSingleton<IFringDbContext>(sp => sp.GetRequiredService<FringDbContext>());
 
 builder.Services.AddTransient<IUserReadRepository, UserReadRepository>();
 builder.Services.AddTransient<IUserWriteRepository, UserWriteRepository>();
@@ -68,6 +69,7 @@ builder.Services.AddTransient<IBillingWriteRepository, BillingWriteRepository>()
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISubscriptionService, SubscriptionService>();
 builder.Services.AddTransient<IBillingService, BillingService>();
+builder.Services.AddTransient<IStoreService, StoreService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

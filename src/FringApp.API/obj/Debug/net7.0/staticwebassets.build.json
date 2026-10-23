@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "Mlsy3kyLeH+t3cWRhO7bxoTfbhriBAm+8W41NDyGZyA=",
-  "Source": "FringApp.API",
-  "BasePath": "_content/FringApp.API",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"sz6Vuue103upJm2e6TzVIoQnwSJ69OqmKuXs7h50Kx4=","Source":"FringApp.API","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

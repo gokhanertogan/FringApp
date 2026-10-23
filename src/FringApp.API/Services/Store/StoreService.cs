@@ -46,7 +46,7 @@ public class StoreService : IStoreService
 
             if (carParkAttributeId is not null)
             {
-                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.Id == carParkAttributeId).Select(x => x.StoreId);
+                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.StoreAttributeDefinitionId == carParkAttributeId).Select(x => x.StoreId).ToList();
                 allData = allData.Where(x => storeIds.Contains(x.Id));
             }
         }
@@ -57,7 +57,7 @@ public class StoreService : IStoreService
 
             if (terraceAttributeId is not null)
             {
-                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.Id == terraceAttributeId).Select(x => x.StoreId);
+                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.StoreAttributeDefinitionId == terraceAttributeId).Select(x => x.StoreId).ToList();
                 allData = allData.Where(x => storeIds.Contains(x.Id));
             }
         }
@@ -68,7 +68,7 @@ public class StoreService : IStoreService
 
             if (wifiAttributeId is not null)
             {
-                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.Id == wifiAttributeId).Select(x => x.StoreId);
+                var storeIds = _storeAttributeReadRepository.GetAll().Where(x => x.StoreAttributeDefinitionId == wifiAttributeId).Select(x => x.StoreId).ToList();
                 allData = allData.Where(x => storeIds.Contains(x.Id));
             }
         }

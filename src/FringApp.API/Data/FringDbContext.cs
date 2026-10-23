@@ -29,8 +29,8 @@ public class FringDbContext : IFringDbContext
         ProductVariants = Database.GetCollection<ProductVariant>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:ProductVariant"));
         ProductVariantDefinitions = Database.GetCollection<ProductVariantDefinition>(configuration.GetValue<string>("DatabaseSettings:CollectionNames:ProductVariantDefinition"));
 
-        FringDbContextSeed.CategoryProductSeedData(CategoryProducts, Categories, Products, ProductSizes, ProductTemperatures, ProductVariantDefinitions, ProductVariants);
-        FringDbContextSeed.StoreSeedData(Stores, StoreAttributes, StoreAttributeDefinitions);
+        FringDbContextSeed.CategoryProductSeedData(CategoryProducts, Categories, Products, ProductSizes, ProductTemperatures, ProductVariantDefinitions, ProductVariants).GetAwaiter().GetResult();
+        FringDbContextSeed.StoreSeedData(Stores, StoreAttributes, StoreAttributeDefinitions).GetAwaiter().GetResult();
     }
     public IMongoCollection<Order> Orders { get; }
     public IMongoCollection<User> Users { get; }
@@ -50,6 +50,11 @@ public class FringDbContext : IFringDbContext
 
     public IMongoCollection<T> DbSet<T>()
     {
+        // Prefer the configured collection (e.g. "Users") so repositories and seed data share the same collection.
+        var configuredCollection = GetType().GetProperties().Select(p => p.GetValue(this)).OfType<IMongoCollection<T>>().FirstOrDefault();
+        if (configuredCollection is not null)
+            return configuredCollection;
+
         var tableAttribute = typeof(T).GetCustomAttribute<TableAttribute>(false);
         var name = tableAttribute is null ? typeof(T).Name : tableAttribute!.Name;
         return Database.GetCollection<T>(name);

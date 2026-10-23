@@ -25,7 +25,7 @@ public class FringDbContextSeed
         await categoryDefinitions.InsertOneAsync(categoryDefinition);
         return categoryDefinition;
     }
-    public static async void CategoryProductSeedData(IMongoCollection<CategoryProduct> categoryProducts, IMongoCollection<CategoryDefinition> categoryDefinition, IMongoCollection<Product> products, IMongoCollection<ProductSizeDefinition> productSizes, IMongoCollection<ProductTemperatureDefinition> productTemperatures, IMongoCollection<ProductVariantDefinition> productVariantDefinitions, IMongoCollection<ProductVariant> productVariants)
+    public static async Task CategoryProductSeedData(IMongoCollection<CategoryProduct> categoryProducts, IMongoCollection<CategoryDefinition> categoryDefinition, IMongoCollection<Product> products, IMongoCollection<ProductSizeDefinition> productSizes, IMongoCollection<ProductTemperatureDefinition> productTemperatures, IMongoCollection<ProductVariantDefinition> productVariantDefinitions, IMongoCollection<ProductVariant> productVariants)
     {
         var isExist = categoryProducts.Find(p => true).Any();
 
@@ -182,7 +182,7 @@ public class FringDbContextSeed
         }
 
     }
-    public static async void StoreSeedData(IMongoCollection<Store> stores, IMongoCollection<StoreAttribute> storeAttributes, IMongoCollection<StoreAttributeDefinition> storeAttributeDefinitions)
+    public static async Task StoreSeedData(IMongoCollection<Store> stores, IMongoCollection<StoreAttribute> storeAttributes, IMongoCollection<StoreAttributeDefinition> storeAttributeDefinitions)
     {
         var isExist = stores.Find(p => true).Any();
 

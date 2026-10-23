@@ -24,10 +24,10 @@ public class SubscriptionService : ISubscriptionService
     public async Task<SubscriptionDefinition> GetCurrentSubscription(string userId)
     {
         var user = await _userReadRepository.GetByIdAsync(userId);
-        if (user is null)
+        if (user?.SubscriptionDefinitionId is null)
             return new SubscriptionDefinition();
 
-        return await _subscriptionReadRepository.GetUserCurrentSubscription(userId);
+        return await _subscriptionReadRepository.GetUserCurrentSubscription(user.SubscriptionDefinitionId);
     }
 
     public async Task<List<SubscriptionHistory>> GetUserSubscriptionHistories(string userId)

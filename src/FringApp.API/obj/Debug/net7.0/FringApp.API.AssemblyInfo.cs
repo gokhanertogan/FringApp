@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FringApp.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3926ba9c7dd2256088afbf1baa756da8386092e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("FringApp.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FringApp.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

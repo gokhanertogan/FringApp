@@ -30,6 +30,9 @@ public class UserControllers : ControllerBase
     public async Task<IActionResult> Get(string userId)
     {
         var user = await _userService.Get(userId);
+        if (user is null)
+            return NotFound();
+
         return Ok(user);
     }
 
@@ -46,6 +49,6 @@ public class UserControllers : ControllerBase
     public async Task<IActionResult> UnSubscribe(string userId)
     {
         var user = await _userService.UnSubscribe(userId);
-        return CreatedAtRoute("GetUser", new { userId = user.Id }, user);
+        return Ok(user);
     }
 }
