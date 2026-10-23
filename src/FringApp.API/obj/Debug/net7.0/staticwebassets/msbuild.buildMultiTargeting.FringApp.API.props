@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\FringApp.API.props" />
-</Project>
